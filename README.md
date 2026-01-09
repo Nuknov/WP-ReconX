@@ -18,7 +18,7 @@ Built for **security researchers, penetration testers, and blue/red teams**.
 - Highlights **potential attack surfaces**
 - Works on **live WordPress sites**
 - Clean UI inside the browser
-- No intrusive scanning — recon only
+- No intrusive scanning and recon only
 
 Designed for **maximum intelligence, minimal noise**.
 
@@ -126,7 +126,7 @@ WP-ReconX performs **passive reconnaissance** against WordPress-powered websites
 >
 > You must have **explicit permission** to analyze any website you do not own.
 >
-> WP-ReconX does **not exploit vulnerabilities** — it only identifies publicly available information.
+> WP-ReconX does **not exploit vulnerabilities** it only identifies publicly available information.
 >
 > The author and contributors are **not responsible** for misuse or legal consequences resulting from unauthorized usage.
 >
