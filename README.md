@@ -78,7 +78,7 @@ Built to integrate **directly inside your browser**.
 ```
 
 
-# 🧠 WP-ReconX — WordPress Reconnaissance Extension
+# 🧠 WP-ReconX -- WordPress Reconnaissance Extension
 
 WP-ReconX is a browser-based WordPress reconnaissance extension built to
 **enumerate usernames**, **detect plugins**, and **map known vulnerabilities**
@@ -129,8 +129,8 @@ WP-ReconX performs **passive reconnaissance** against WordPress-powered websites
 > WP-ReconX does **not exploit vulnerabilities** — it only identifies publicly available information.
 >
 > The author and contributors are **not responsible** for misuse or legal consequences resulting from unauthorized usage.
-
-⚖️ Always follow ethical hacking standards and applicable laws.
+>
+> ⚖️ Always follow ethical hacking standards and applicable laws.
 
 ---
 
@@ -147,7 +147,7 @@ WP-ReconX is ideal for the **recon phase** before deeper testing begins.
 
 ---
 
-## **Team Working:**
+## **Team Working and Collaboration:**
 
 * [AnonKryptiQuz](https://github.com/AnonKryptiQuz)
 * [0nsec](https://github.com/0nsec)
