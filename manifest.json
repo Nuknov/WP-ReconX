@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "WP Security Scanner",
+  "version": "2.1",
+  "description": "Advanced WordPress detection with plugin scanning, CVE identification, and core vulnerability checking",
+  "permissions": ["activeTab", "scripting", "tabs", "storage"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon-blue-16.png",
+      "32": "icon-blue-32.png",
+      "48": "icon-blue-48.png",
+      "128": "icon-blue.png"
+    }
+  },
+  "icons": {
+    "16": "icon-blue-16.png",
+    "32": "icon-blue-32.png",
+    "48": "icon-blue-48.png",
+    "128": "icon-blue.png"
+  }
+}
