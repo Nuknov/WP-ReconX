@@ -156,4 +156,4 @@ WP-ReconX is ideal for the **recon phase** before deeper testing begins.
 
 ## **Author**
 
-**Created by:** [Nuknov](https://github.com/Nuknov)
+**Created by:** [Nuknov](https://github.com/Nuknov) 
