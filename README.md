@@ -1,5 +1,7 @@
 # 🔥 **WP-ReconX -- WordPress Reconnaissance & Vulnerability Mapper**
 
+[![Version](https://img.shields.io/badge/version-2.2-blue.svg)]() [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
 **WP-ReconX** is a powerful WordPress reconnaissance extension designed to
 **enumerate usernames**, **fingerprint plugins**, and **map known vulnerabilities**
 with associated **CVE references** all in one clean, automated workflow.
@@ -8,7 +10,11 @@ Fast. Precise. Insightful.
 Built for **security researchers, penetration testers, and blue/red teams**.
 
 ---
+## 📸 **Screenshot**
 
+<img src="https://i.ibb.co/G4sZqF38/Picsart-26-01-09-23-27-53-159.jpg"/>
+
+---
 ## 🧩 **What WP-ReconX Does**
 
 - Enumerates **WordPress usernames**
@@ -26,12 +32,12 @@ Designed for **maximum intelligence, minimal noise**.
 
 ## 🛰️ **Tech Stack**
 
-- JavaScript (Browser Extension)
-- WordPress Enumeration Techniques
-- Public Vulnerability Databases (CVE / WPScan references)
-- REST & Passive Recon Methods
-
-Built to integrate **directly inside your browser**.
+- **Manifest V3** - Latest Chrome Extension API
+- **JavaScript** - Core extension logic
+- **Chrome Extensions API** - Tab management, content scripts, background service worker
+- **WordPress REST API** - User enumeration
+- **CVE Database** - Vulnerability intelligence
+- **Passive Reconnaissance** - No active exploitation
 
 ---
 
@@ -76,47 +82,65 @@ Built to integrate **directly inside your browser**.
   ]
 }
 ```
-
-
-# 🧠 WP-ReconX -- WordPress Reconnaissance Extension
-
-WP-ReconX is a browser-based WordPress reconnaissance extension built to
-**enumerate usernames**, **detect plugins**, and **map known vulnerabilities**
-along with their **CVE references** all through passive analysis.
-
-Designed for **security researchers, penetration testers, and defenders** who
-need fast, reliable WordPress intelligence.
-
 ---
 
 ## 🛠️ Installation
 
-### Load as a Browser Extension (Developer Mode)
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Nuknov/WP-ReconX.git
+   cd WP-ReconX
+   ```
 
-1. Clone or download the **WP-ReconX** repository
-2. Open your browser and navigate to **Extensions**
-3. Enable **Developer Mode**
-4. Click **Load Unpacked**
-5. Select the `WP-ReconX` directory
+2. **Open your browser's extension page**
+   - Chrome: Navigate to `chrome://extensions/`
+   - Edge: Navigate to `edge://extensions/`
 
-The extension will now appear in your toolbar and is ready for use.
+3. **Enable Developer Mode**
+   - Toggle the switch in the top-right corner
 
----
+4. **Load the extension**
+   - Click "Load unpacked"
+   - Select the `WP-ReconX` directory
+
+5. **Pin the extension** (optional)
+   - Click the puzzle icon in the toolbar
+   - Pin "WP Security Scanner" for easy access
+
+### Method 2: Firefox (Temporary)
+
+1. Navigate to `about:debugging#/runtime/this-firefox`
+2. Click "Load Temporary Add-on"
+3. Select any file in the WP-ReconX directory (e.g., `manifest.json`)
+
 
 ## ⚙️ How It Works
 
-WP-ReconX performs **passive reconnaissance** against WordPress-powered websites:
+### WordPress Detection
+WP-ReconX uses multiple detection methods:
+- Meta generator tags (`<meta name="generator" content="WordPress X.X">`)
+- `/wp-content/` and `/wp-includes/` directory references
+- `/wp-json/` REST API endpoints
+- WordPress-specific HTML patterns
 
-- Detects WordPress presence using known fingerprints
-- Enumerates publicly accessible **usernames**
-- Identifies **installed or exposed plugins**
-- Cross-references detected plugins with **known vulnerabilities**
-- Displays **CVE IDs, severity levels, and descriptions**
-- Presents findings in a clean, readable interface
+### Plugin Detection
+Plugins are identified through:
+- Script tags with `/wp-content/plugins/` paths
+- Stylesheet links to plugin directories
+- Version parameters in query strings (`?ver=X.X.X`)
+- Inline HTML references to plugin assets
 
-🚫 No brute-force  
-🚫 No exploitation  
-✅ Recon only
+### Vulnerability Checking
+The extension maintains:
+- **Known Plugin CVE Database**: Maps plugin slugs to CVE records
+- **WordPress Core Vulnerability Database**: 50+ core vulnerabilities with version ranges
+- **Version Comparison Logic**: Accurately matches site version against vulnerable ranges
+
+### Username Enumeration
+Three enumeration techniques:
+1. **DOM Parsing**: Scans for author links in page HTML
+2. **REST API**: Queries `/wp-json/wp/v2/users` endpoint
+3. **Author Archives**: Tests author ID parameters (`/?author=1`)
 
 ---
 
@@ -130,7 +154,7 @@ WP-ReconX performs **passive reconnaissance** against WordPress-powered websites
 >
 > The author and contributors are **not responsible** for misuse or legal consequences resulting from unauthorized usage.
 >
-> ⚖️ Always follow ethical hacking standards and applicable laws.
+> Always follow ethical hacking standards and applicable laws.
 
 ---
 
