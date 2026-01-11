@@ -146,7 +146,7 @@ Three enumeration techniques:
 
 ## ⚠️ Disclaimer
 
-> This tool is intended for **educational, research, and authorized security testing purposes only**.
+> This tool is intended solely for **educational, research, and authorized security testing purposes only**.
 >
 > You must have **explicit permission** to analyze any website you do not own.
 >
