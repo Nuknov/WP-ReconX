@@ -156,12 +156,27 @@ function detectWP(tabId) {
     },
     (results) => {
       if (chrome.runtime.lastError) {
-        chrome.action.setIcon({ path: "icon-red.png", tabId });
+        chrome.action.setIcon({ 
+          path: {
+            "16": "icon/icon-red-16.png",
+            "32": "icon/icon-red-32.png",
+            "48": "icon/icon-red-48.png"
+          }, 
+          tabId 
+        });
         return;
       }
       const result = results[0]?.result || {};
       const isWP = !!result.isWP;
-      const iconPath = isWP ? "icon-green.png" : "icon-red.png";
+      const iconPath = isWP ? {
+        "16": "icon/icon-green-16.png",
+        "32": "icon/icon-green-32.png",
+        "48": "icon/icon-green-48.png"
+      } : {
+        "16": "icon/icon-red-16.png",
+        "32": "icon/icon-red-32.png",
+        "48": "icon/icon-red-48.png"
+      };
       chrome.action.setIcon({ path: iconPath, tabId });
     }
   );
