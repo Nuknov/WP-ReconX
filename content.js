@@ -80,6 +80,32 @@
     return Array.from(usernames);
   }
 
+  // Check if XML-RPC is enabled
+  async function checkXmlrpc() {
+    try {
+      const baseUrl = window.location.origin;
+      const xmlrpcUrl = `${baseUrl}/xmlrpc.php`;
+      
+      const response = await fetch(xmlrpcUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/xml'
+        },
+        body: '<?xml version="1.0"?><methodCall><methodName>system.listMethods</methodName><params></params></methodCall>'
+      });
+      
+      if (response.ok) {
+        const text = await response.text();
+        if (text.includes('methodResponse') || text.includes('XML-RPC')) {
+          return 'Enabled';
+        }
+      }
+      return 'Disabled';
+    } catch (error) {
+      return 'Unknown';
+    }
+  }
+
   // Listen for messages from the popup
   chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === "checkWP") {
