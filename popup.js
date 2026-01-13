@@ -31,6 +31,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       document.getElementById("wpVersion").textContent = response.wpVersion || "Unknown";
       document.getElementById("theme").textContent = response.theme || "Unknown";
       document.getElementById("restApi").textContent = response.restApi || "Not available";
+      document.getElementById("xmlrpc").textContent = response.xmlrpc || "Unknown";
       
       // Display plugins if detected
       if (response.plugins && response.plugins.length > 0) {
@@ -48,6 +49,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       document.getElementById("wpVersion").textContent = "N/A";
       document.getElementById("theme").textContent = "N/A";
       document.getElementById("restApi").textContent = "N/A";
+      document.getElementById("xmlrpc").textContent = "N/A";
     }
   });
 });

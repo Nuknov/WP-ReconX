@@ -80,18 +80,65 @@
     return Array.from(usernames);
   }
 
+  // Check if XML-RPC is enabled
+  async function checkXmlrpc() {
+    try {
+      const baseUrl = window.location.origin;
+      const xmlrpcUrl = `${baseUrl}/xmlrpc.php`;
+      
+      const response = await fetch(xmlrpcUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/xml'
+        },
+        body: '<?xml version="1.0"?><methodCall><methodName>system.listMethods</methodName><params></params></methodCall>'
+      });
+      
+      if (response.ok) {
+        const text = await response.text();
+        if (text.includes('methodResponse') || text.includes('XML-RPC')) {
+          return 'Enabled';
+        }
+      }
+      return 'Disabled';
+    } catch (error) {
+      return 'Unknown';
+    }
+  }
+
   // Listen for messages from the popup
   chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === "checkWP") {
       const detectedPlugins = isWP ? detectPlugins() : [];
       
-      // Request CVE information for detected plugins
-      if (detectedPlugins.length > 0) {
-        chrome.runtime.sendMessage({
-          action: "checkCVEs",
-          plugins: detectedPlugins
-        }, (cveResponse) => {
-          // Also check WordPress core vulnerabilities
+      // Check XML-RPC status first
+      checkXmlrpc().then(xmlrpcStatus => {
+        // Request CVE information for detected plugins
+        if (detectedPlugins.length > 0) {
+          chrome.runtime.sendMessage({
+            action: "checkCVEs",
+            plugins: detectedPlugins
+          }, (cveResponse) => {
+            // Also check WordPress core vulnerabilities
+            chrome.runtime.sendMessage({
+              action: "checkWPVersion",
+              wpVersion: generatorMeta
+            }, (wpVulnResponse) => {
+              sendResponse({
+                isWP: !!isWP,
+                siteTitle,
+                wpVersion: generatorMeta,
+                theme,
+                restApi,
+                xmlrpc: xmlrpcStatus,
+                domUsers: scanDomForUsernames(),
+                plugins: cveResponse?.pluginsWithCVEs || detectedPlugins,
+                wpVulnerabilities: wpVulnResponse?.wpVulnerabilities || []
+              });
+            });
+          });
+        } else {
+          // No plugins, but still check WP core vulnerabilities
           chrome.runtime.sendMessage({
             action: "checkWPVersion",
             wpVersion: generatorMeta
@@ -102,32 +149,15 @@
               wpVersion: generatorMeta,
               theme,
               restApi,
+              xmlrpc: xmlrpcStatus,
               domUsers: scanDomForUsernames(),
-              plugins: cveResponse?.pluginsWithCVEs || detectedPlugins,
+              plugins: [],
               wpVulnerabilities: wpVulnResponse?.wpVulnerabilities || []
             });
           });
-        });
-        return true; // Keep message channel open for async response
-      } else {
-        // No plugins, but still check WP core vulnerabilities
-        chrome.runtime.sendMessage({
-          action: "checkWPVersion",
-          wpVersion: generatorMeta
-        }, (wpVulnResponse) => {
-          sendResponse({
-            isWP: !!isWP,
-            siteTitle,
-            wpVersion: generatorMeta,
-            theme,
-            restApi,
-            domUsers: scanDomForUsernames(),
-            plugins: [],
-            wpVulnerabilities: wpVulnResponse?.wpVulnerabilities || []
-          });
-        });
-        return true;
-      }
+        }
+      });
+      return true; // Keep message channel open for async response
     } else if (request.action === "scanDomUsers") {
       sendResponse({ usernames: scanDomForUsernames() });
     }
