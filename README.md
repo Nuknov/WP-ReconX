@@ -1,4 +1,4 @@
-# 🔥 **WP-ReconX -- WordPress Reconnaissance & Vulnerability Mapper**
+# **WP-ReconX -- WordPress Reconnaissance & Vulnerability Mapper**
 
 [![Version](https://img.shields.io/badge/version-2.0-blue.svg)]() [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
