@@ -14,11 +14,13 @@ Fast. Precise. Insightful.
 Built for **security researchers, penetration testers, and blue/red teams**.
 
 ---
+
 ## 📸 **Screenshot**
 
 <img src="https://i.ibb.co/G4sZqF38/Picsart-26-01-09-23-27-53-159.jpg"/>
 
 ---
+
 ## 🧩 **What WP-ReconX Does**
 
 - Enumerates **WordPress usernames**
@@ -86,6 +88,7 @@ Designed for **maximum intelligence, minimal noise**.
   ]
 }
 ```
+
 ---
 
 ## 🛠️ Installation
