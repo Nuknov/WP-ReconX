@@ -1,6 +1,10 @@
 # **WP-ReconX -- WordPress Reconnaissance & Vulnerability Mapper**
 
 [![Version](https://img.shields.io/badge/version-2.0-blue.svg)]() [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Built by Nuknov](https://img.shields.io/badge/Built%20by-Nuknov-000000?logo=github&logoColor=white)](https://github.com/Nuknov)
+[![Built by AnonKryptiQuz](https://img.shields.io/badge/Built%20by-AnonKryptiQuz-000000?logo=github&logoColor=white)](https://github.com/AnonKryptiQuz)
+[![Built by 0nsec](https://img.shields.io/badge/Built%20by-0nsec-000000?logo=github&logoColor=white)](https://github.com/0nsec)
+
 
 **WP-ReconX** is a powerful WordPress reconnaissance extension designed to
 **enumerate usernames**, **fingerprint plugins**, and **map known vulnerabilities**
