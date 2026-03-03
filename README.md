@@ -8,7 +8,7 @@
 
 **WP-ReconX** is a powerful WordPress reconnaissance extension designed to
 **enumerate usernames**, **fingerprint plugins**, and **map known vulnerabilities**
-with associated **CVE reference** all in one clean, automated workflow.
+with associated **CVE references** all in one clean, automated workflow.
 
 Fast. Precise. Insightful.  
 Built for **security researchers, penetration testers, and blue/red teams**.
